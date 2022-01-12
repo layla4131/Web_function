@@ -1,7 +1,7 @@
 ## 做過的網站效果
 
 </br>
-<span  color=blue>左側展開效果</span></br>
+<span>左側展開效果</span></br>
 <img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/gif/left_pop.gif" width="200"></br>
 
 <span>右側展開效果</span></br>
