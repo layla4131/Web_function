@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>網頁右側固定伸縮視窗</title>
+    <meta http-equiv="content-type" content="text/html;charset=gb2312" />
+    <style type="text/css">
+      /* 右邊 */
+      #open_Right {
+        width: 600px;
+        position: fixed;
+        position: absolute;
+        right: 0;
+        top: 10%;
+        z-index: 10;
+      }
+      #close_Right {
+        float: right;
+        cursor: pointer;
+        background: #ac8932;
+        text-align: center;
+        line-height: 180px;
+      }
+      /* /右邊 */
+    </style>
+    <script type="text/javascript">
+      // 右邊
+      window.onload = function () {
+        var box_Right = document.getElementById("open_Right");
+        var close_Right = document.getElementById("close_Right");
+        var flag = true,
+          timer = null,
+          initime = null,
+          boxLen_Left = 0;
+        close_Right.onclick = function () {
+          /*無動態效果的伸縮，這兩段就可以了
+          box_Right.style.right = flag?'-270px':0;
+          flag = !flag;
+          */
+          clearTimeout(initime);
+          //根據狀態flag執開展開收縮
+          if (flag) {
+            boxLen_Left = 0;
+            timer = setInterval(slideright, 10);
+          } else {
+            boxLen_Left = -270;
+            timer = setInterval(slideleft, 10);
+          }
+        };
+        //展開
+        function slideright() {
+          if (boxLen_Left <= -540) {
+            clearInterval(timer);
+            flag = !flag;
+            return false;
+          } else {
+            boxLen_Left -= 5;
+            box_Right.style.right = boxLen_Left + "px";
+          }
+        }
+        //收縮
+        function slideleft() {
+          if (boxLen_Left >= 0) {
+            clearInterval(timer);
+            flag = !flag;
+            return false;
+          } else {
+            boxLen_Left = 0;
+            box_Right.style.right = boxLen_Left + "px";
+          }
+        }
+        //加載網頁過3秒之後會自動收縮
+        // initime = setTimeout("close_Right.click()", 3000);
+      };
+      // /右邊
+    </script>
+  </head>
+
+  <body>
+    <div id="open_Right">
+      <img
+        id="close_Right"
+        src="./images/0111_openBoxRight.jpg"
+        alt="紅包"
+        style="width: 100%"
+      />
+    </div>
+  </body>
+</html>
