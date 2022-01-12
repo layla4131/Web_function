@@ -1,4 +1,4 @@
-## Web_function
+## 做過的網站效果
 
 #左側展開效果
 ![Layla](https://raw.githubusercontent.com/layla4131/Web_function/main/images/gif/left_pop.gif)         
