@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snow</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <!-- google字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=The+Nautigal&display=swap"
+      rel="stylesheet"
+    />
+    <!-- /google字體 -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+    <canvas
+      id="snowCanvas"
+      style="
+        background: #000;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        position: absolute;
+        pointer-events: none;
+        z-index: -1;
+      "
+    ></canvas>
+    <script>
+      var snow = function () {
+        var b = document.getElementById("snowCanvas"),
+          a = b.getContext("2d"),
+          d = window.innerWidth,
+          c = window.innerHeight;
+        b.width = d;
+        b.height = c;
+        for (var e = [], b = 0; b < 70; b++) {
+          e.push({
+            x: Math.random() * d,
+            y: Math.random() * c,
+            r: Math.random() * 4 + 1,
+            d: Math.random() * 70,
+          });
+        }
+        var h = 0;
+        window.intervral4Christmas = setInterval(function () {
+          a.clearRect(0, 0, d, c);
+          //   雪本體顏色
+          a.fillStyle = "rgba(240, 248, 255, 0.6)";
+          //   雪的影子
+          a.shadowBlur = 10;
+          a.shadowColor = "rgba(255, 255, 255, 0.9)";
+          a.beginPath();
+          for (var b = 0; b < 70; b++) {
+            var f = e[b];
+            a.moveTo(f.x, f.y);
+            a.arc(f.x, f.y, f.r, 0, Math.PI * 2, !0);
+          }
+          a.fill();
+          h += 0.01;
+          for (b = 0; b < 70; b++) {
+            if (
+              ((f = e[b]),
+              (f.y += Math.cos(h + f.d) + 1 + f.r / 2),
+              (f.x += Math.sin(h) * 2),
+              f.x > d + 5 || f.x < -5 || f.y > c)
+            ) {
+              e[b] =
+                b % 3 > 0
+                  ? { x: Math.random() * d, y: -10, r: f.r, d: f.d }
+                  : Math.sin(h) > 0
+                  ? { x: -5, y: Math.random() * c, r: f.r, d: f.d }
+                  : { x: d + 5, y: Math.random() * c, r: f.r, d: f.d };
+            }
+          }
+        }, 70);
+      };
+      snow();
+    </script>
+    <style>
+      .hello {
+        font-family: "The Nautigal", cursive;
+        color: rgb(255, 255, 255);
+        font-size: 150px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hello">
+      <p>pretty, isn't it?</p>
+    </div>
+  </body>
+</html>
