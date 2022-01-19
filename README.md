@@ -12,3 +12,7 @@
        
 <span>點擊複製效果</span></br>
 <img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/clickCopy.gif" width="200"></br>
+
+<span>視差滾動效果</span></br>
+<img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/Parallax_Scrolling.gif" width="200"></br>
+
