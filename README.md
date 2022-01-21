@@ -16,3 +16,6 @@
 <span>視差滾動效果</span></br>
 <img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/Parallax_Scrolling.gif" width="200"></br>
 
+<span>時間倒數效果</span></br>
+<img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/countdown.gif" width="200"></br>
+
