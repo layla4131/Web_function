@@ -19,3 +19,6 @@
 <span>時間倒數效果</span></br>
 <img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/countdown.gif" width="200"></br>
 
+<span>圖片輪播效果</span></br>
+<img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/gif/SlideShow.gif" width="200"></br>
+
