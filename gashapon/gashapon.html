@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>gashapon扭蛋機</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../local/jquery-1.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- jquery -->
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+    <!-- jquery -->
+
+    <!-- 遊戲 -->
+    <style>
+      /* 遊戲視窗 */
+      #leftDiv1 {
+        width: 100%;
+        height: 100%;
+        max-width: 80vh;
+        top: 10%;
+        left: 30%;
+        z-index: 1000;
+        position: fixed;
+        color: #fff;
+        font-size: 3vh;
+        text-align: center;
+        align-items: center;
+        font-family: 微軟正黑體;
+      }
+      /* 遊戲視窗 */
+
+      /* 遊戲起始畫面按鈕 */
+      .btn_show {
+        position: fixed;
+        max-width: 25vh;
+        left: 44%;
+        top: 66%;
+        z-index: 50000000;
+        background: transparent;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.4);
+        animation: scaleDrew 2.5s ease-in-out infinite;
+      }
+      /* /遊戲起始畫面按鈕 */
+
+      /* 按鈕放大縮小動畫 */
+      @keyframes scaleDrew {
+        0% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.05);
+        }
+        50% {
+          transform: scale(1);
+        }
+        75% {
+          transform: scale(1.05);
+        }
+      }
+      /* /按鈕放大縮小動畫 */
+
+      /* 關閉視窗按鈕 */
+      .btn_close {
+        font-size: 45px;
+        color: #fff;
+        position: absolute;
+        z-index: 2000;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        top: 0;
+        right: 2%;
+      }
+      /* /關閉視窗按鈕 */
+
+      /* 抽獎動畫 */
+      .img-shake {
+        position: absolute;
+        max-width: 80vh;
+        z-index: 1002;
+        top: 0%;
+        left: 0%;
+      }
+      /* /抽獎動畫 */
+
+      /* 中獎彩卷 */
+      .img-ok {
+        position: absolute;
+        width: 1040px;
+        max-width: 75vh;
+        z-index: 1005;
+        top: 30%;
+        left: 4%;
+        box-shadow: 6px 10px 12px 5px rgba(0, 0, 0, 0.5);
+      }
+      /* /中獎彩卷 */
+
+      /* RWD */
+      @media screen and (max-width: 768px) {
+        /* 遊戲視窗 */
+        #leftDiv1 {
+          position: absolute;
+          width: 100%;
+          max-width: 70%;
+          top: 30%;
+          left: 0%;
+          bottom: 0%;
+          right: 0%;
+          margin: auto;
+          z-index: 1000;
+          position: fixed;
+          color: #fff;
+          font-size: 3vh;
+          text-align: center;
+          align-items: center;
+        }
+        /* 遊戲視窗 */
+
+        /* 遊戲起始畫面按鈕 */
+        .btn_show {
+          position: fixed;
+          position: absolute;
+          max-width: 42%;
+          right: 0%;
+          left: 0%;
+          margin: auto;
+          z-index: 5000;
+          background: transparent;
+          border: none;
+          border-radius: 20%;
+          cursor: pointer;
+          animation: scaleDrew 2.5s ease-in-out infinite;
+        }
+        /* 按鈕放大縮小動畫 */
+        @keyframes scaleDrew {
+          0% {
+            transform: scale(1);
+          }
+          25% {
+            transform: scale(1.05);
+          }
+          50% {
+            transform: scale(1);
+          }
+          75% {
+            transform: scale(1.05);
+          }
+        }
+        /* 關閉視窗按鈕 */
+        .btn_close {
+          color: #fff;
+          position: absolute;
+          z-index: 2000;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          top: 0%;
+          left: 0%;
+          right: 90%;
+          bottom: 0%;
+          margin: auto;
+          font-size: 80%;
+        }
+        /* 抽獎動畫 */
+        .img-shake {
+          position: absolute;
+          max-width: 80vh;
+          z-index: 1002;
+          top: 0%;
+          left: 0%;
+        }
+        /* 中獎彩卷 */
+        .img-ok {
+          position: absolute;
+          position: fixed;
+          width: 100%;
+          max-width: 75%;
+          z-index: 1005;
+          top: 0%;
+          left: 0%;
+          right: 0%;
+          bottom: 28%;
+          margin: auto;
+          box-shadow: 6px 10px 12px 5px rgba(0, 0, 0, 0.5);
+        }
+      }
+      /* /RWD */
+    </style>
+    <!-- /遊戲 -->
+  </head>
+
+  <body>
+    <div
+      class="main"
+      style="background-color: #dec9b4; padding: 0; overflow: hidden"
+    >
+      <!-- 遊戲起始畫面 -->
+      <div id="leftDiv1">
+        <div style="position: absolute">
+          <a href="#/">
+            <img src="/pop/01.jpg" style="width: 100%; max-width: 90vh"
+          /></a>
+          <!-- 遊戲開啟按鈕 -->
+          <a href="#/" class="start btn_show">
+            <img style="width: 100%" src="/pop/button.png" />
+          </a>
+        </div>
+        <!-- 視窗關閉按鈕 -->
+        <a href="#/" class="btn_close">x</a>
+        <!-- 扭蛋動畫 -->
+        <!-- 這裡隨便選擇一張做為初始畫面 -->
+        <img src="/ticket/0.gif" id="imgShake" class="img-shake" alt="" />
+        <!-- 中獎票券 -->
+        <!-- 這裡隨便選擇一張做為初始畫面 -->
+        <img src="/ticket/09.png" id="imgOk" class="img-ok" alt="" />
+      </div>
+    </div>
+
+    <!-- 點擊右上X可關閉視窗 -->
+    <script>
+      $(".btn_close").click(function () {
+        $("#mask,.popup,#leftDiv1").css("display", "none");
+      });
+    </script>
+
+    <script>
+      // 扭蛋執行的圖片動畫先隱藏
+      $(".img-shake").hide();
+      // 中獎彩票先隱藏
+      $(".img-ok").hide();
+      // 點擊開始按鈕執行後
+      $(".start").on("click", function () {
+        // 會出現編號由0-2的隨機扭蛋圖一張
+        var img = document.getElementById("imgShake");
+        var ran = Math.floor(Math.random() * 3);
+        // 這部分是寫檔案位置+ran出來的隨機數+檔名結尾
+        img.src = "/gashaponGIF/" + ran + ".gif";
+        // 出現扭蛋動畫
+        $(".img-shake").show();
+        // 開始按鈕隱藏,不隱藏的話會一直出現在畫面上
+        $(".btn_show").hide();
+
+        // 執行隨機出現不同的彩券
+        setTimeout(function () {
+          // 點擊按鈕後隨機出現編號由0-19的彩券一張
+          var items = document.getElementById("imgOk");
+          var itemsRan = Math.floor(Math.random() * 19);
+          // 這部分是寫檔案位置+ran出來的隨機數+檔名結尾
+          items.src = "/ticket/0" + itemsRan + ".png";
+          // 動畫1.5s後＞扭蛋動畫隱藏＞彩券出現
+          $(".img-shake").hide();
+          $(".img-ok").show();
+          $();
+        }, 1500);
+      });
+    </script>
+
+    <!-- 彈出視窗JS -->
+    <!-- <script>
+      $("#leftDiv1").click(function (e) {
+        e.preventDefault();
+      });
+      $(function () {
+        $(".btn_show").click(function () {
+          var $Popup = $(".popup");
+          $Popup.css({
+            left: ($("body").width() - $Popup.width()) / 2 + "px",
+            top:
+              ($(window).height() - $Popup.height()) / 2 +
+              $(window).scrollTop() +
+              "px",
+            display: "block",
+          });
+        });
+        $(".btn_close").click(function () {
+          $("#mask,.popup,#leftDiv1").css("display", "none");
+        });
+      });
+    </script> -->
+    <!-- /彈出視窗JS -->
+    <style>
+      /* 遊戲彈窗關閉 */
+      /* .divclose1,
+      .divclose2 {
+        position: absolute;
+        top: 0;
+        right: 0%;
+        width: 5%;
+        height: 5%;
+        z-index: 5;
+        cursor: pointer;
+      } */
+      /* 遊戲彈窗關閉 */
+
+      /* 遊戲彈窗圖片 */
+      /* .divclose2 img,
+      .divclose1 img {
+        cursor: pointer;
+      } */
+      /* 遊戲彈窗圖片 */
+
+      /* 遮罩 */
+      /* #mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        background: #666;
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+        -moz-opacity: 0.5;
+        display: none;
+      } */
+      /* /遮罩 */
+
+      /* 彈出視窗 */
+      /* .popup {
+        max-width: 95vh;
+        z-index: 1001;
+        top: 10%;
+        position: absolute;
+        position: fixed;
+        display: none;
+      } */
+      /* /彈出視窗 */
+
+      /* 彈出視窗後的按鈕 */
+      /* .pop_btn_show {
+        max-width: 85vh;
+        position: fixed;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        left: 44%;
+        top: 71%;
+        animation: scaleDrew 2.5s ease-in-out infinite;
+      } */
+      /* /彈出視窗後的按鈕 */
+    </style>
+  </body>
+</html>
