@@ -4,9 +4,7 @@
 
 | 左側展開效果 | 右側展開效果 | 下雪背景效果 | 
 |-------------|-------------|-------------|
-| <img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/gif/left_pop.gif" width="200"> | 
-| <img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/gif/right_pop.gif" width="200"> |
-| <img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/gif/snow.gif" width="200"> |
+| <img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/gif/left_pop.gif" width="200"> |  <img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/gif/right_pop.gif" width="200"> | <img src="https://raw.githubusercontent.com/layla4131/Web_function/main/images/gif/snow.gif" width="200"> |
 
 </br>
 
