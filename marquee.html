@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>圖片跑馬燈</title>
+    <style>
+        /* 照片本身為長條圖,所以設定為視窗350vw高度,則維持90%比例,讓跑馬燈可以隨著視窗改變圖片尺寸 */
+      div.marquee > img {
+        position: relative;
+        margin-right: -1vw;
+        width:350vw;
+        height: 90%;
+      }
+
+      /* 這裡設置強制不換行,讓圖片可以成長狀連接 */
+      .marquee-wrapper {
+        display: inline-block;
+        white-space: nowrap;
+      }
+
+      .marquee {
+        display: inline-block;
+        white-space: nowrap;
+        position: relative;
+        transform: translate3d(0%, 0, 0);
+        animation-name: marquee;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translate3d(0%, 0, 0);
+        }
+
+        100% {
+          transform: translate3d(-100%, 0, 0);
+        }
+      }
+    </style>
+    <script></script>
+  </head>
+  <body>
+    <div style="position: relative; padding: 0; margin: 0px">
+      <img
+        src="https://img.lovfee.com/middle/2022/20220314/images/B/01_word.png"
+        alt=""
+        style="width: 100%; position: absolute; z-index: 1"
+      />
+
+      <section>
+        <div>
+          <div>
+            <div class="marquee-wrapper">
+              <div class="marquee" style="animation-duration: 160s">
+                <img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                />
+              </div>
+              <div class="marquee" style="animation-duration: 160s">
+                <img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                /><img
+                  src="https://img.lovfee.com/middle/2022/20220314/images/B/01.jpg"
+                />
+              </div>
+            </div>
+         
+      </section>
+    </div>
+  </body>
+</html>
