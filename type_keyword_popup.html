@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>type keyword popup images</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+      #windows {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.75);
+      }
+      .windows-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
+      #close {
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        font-size: 2vw;
+        color: #fff;
+        z-index: 9999;
+        top: 1%;
+        left: 1%;
+        cursor: pointer;
+      }
+
+      #sectets img {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      var word = "lovfee";
+      var input = "";
+      document.body.addEventListener("keypress", function (ev) {
+        input += String.fromCharCode(ev.keyCode);
+        console.log(input);
+        if (input == word) {
+          //   alert("typed hello");
+          windows.style = " ";
+          input = "";
+        }
+        $("span,windows").click(function () {
+          $(".windows").fadeOut();
+        });
+      });
+
+      // reset input when pressing esc
+      document.body.addEventListener("keyup", function (ev) {
+        if (ev.keyCode == 27) input = "";
+      });
+    </script>
+
+    <h1>test</h1>
+    <div id="windows" class="windows" style="display: none">
+      <div class="windows-inner">
+        <div class="close" id="close">
+          <span id="span">&times;</span>
+        </div>
+        <div id="sectets">
+          <img src="https://i.imgflip.com/1kh0tg.jpg" style="width: 100%" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
