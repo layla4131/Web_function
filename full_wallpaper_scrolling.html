@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .section {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 36px;
+        color: #fff;
+        transition: transform 0.5s ease;
+      }
+
+      #section1 {
+        background-color: #ff6699;
+        background-image: url("https://github.com/layla4131/Web_function/blob/main/images/image1.jpg?raw=true");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      #section2 {
+        background-color: #3399ff;
+        transform: translateY(100%);
+        background-image: url("https://github.com/layla4131/Web_function/blob/main/images/image2.jpg?raw=true");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      #section3 {
+        background-color: #66cc99;
+        transform: translateY(100%);
+        background-image: url("https://github.com/layla4131/Web_function/blob/main/images/image3.jpg?raw=true");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      /* 箭頭 */
+      .arrow-container {
+        position: fixed;
+        left: 50%;
+        bottom: 2%;
+        transform: translateX(-50%);
+        text-align: center;
+        width: 100%;
+      }
+
+      .arrow {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        width: 0;
+        height: 0;
+        border-left: 4vw solid transparent;
+        border-right: 4vw solid transparent;
+        border-top: 4vw solid #fff;
+        animation: arrowAnimation 1.5s infinite;
+      }
+
+      .arrow.upward {
+        border-top: none;
+        border-bottom: 4vw solid #fff;
+        animation: arrowAnimationUpward 1.5s infinite;
+      }
+
+      @keyframes arrowAnimation {
+        0% {
+          opacity: 0;
+          transform: translateY(-50%) scale(0.5);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(50%) scale(0.5);
+        }
+      }
+
+      @keyframes arrowAnimationUpward {
+        0% {
+          opacity: 0;
+          transform: translateY(50%) scale(0.5);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-50%) scale(0.5);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="section1" class="section">
+      <h1>Section 1</h1>
+    </div>
+
+    <div id="section2" class="section">
+      <h1>Section 2</h1>
+    </div>
+
+    <div id="section3" class="section">
+      <h1>Section 3</h1>
+    </div>
+
+    <div class="arrow-container">
+      <div id="arrow" class="arrow"></div>
+    </div>
+
+    <script>
+      let currentSection = 1;
+      const section1 = document.getElementById("section1");
+      const section2 = document.getElementById("section2");
+      const section3 = document.getElementById("section3");
+      const arrow = document.getElementById("arrow");
+
+      window.addEventListener("wheel", scrollHandler);
+      arrow.addEventListener("click", arrowClickHandler);
+
+      function scrollHandler(event) {
+        if (event.deltaY > 0) {
+          if (currentSection === 1) {
+            section2.style.transform = "translateY(0)";
+            arrow.classList.remove("upward");
+            currentSection = 2;
+          } else if (currentSection === 2) {
+            section3.style.transform = "translateY(0)";
+            arrow.classList.add("upward");
+            currentSection = 3;
+          }
+        } else if (event.deltaY < 0) {
+          if (currentSection === 3) {
+            section3.style.transform = "translateY(100%)";
+            arrow.classList.add("upward");
+            currentSection = 2;
+          } else if (currentSection === 2) {
+            section2.style.transform = "translateY(100%)";
+            arrow.classList.remove("upward");
+            currentSection = 1;
+          }
+        }
+      }
+
+      function arrowClickHandler() {
+        if (arrow.classList.contains("upward")) {
+          scrollUp();
+        } else {
+          scrollDown();
+        }
+      }
+
+      function scrollUp() {
+        if (currentSection === 2) {
+          section2.style.transform = "translateY(100%)";
+          arrow.classList.remove("upward");
+          currentSection = 1;
+        } else if (currentSection === 3) {
+          section3.style.transform = "translateY(100%)";
+          arrow.classList.remove("upward");
+          currentSection = 2;
+        }
+      }
+
+      function scrollDown() {
+        if (currentSection === 1) {
+          section2.style.transform = "translateY(0)";
+          arrow.classList.remove("upward");
+          currentSection = 2;
+        } else if (currentSection === 2) {
+          section3.style.transform = "translateY(0)";
+          arrow.classList.add("upward");
+          currentSection = 3;
+        }
+      }
+    </script>
+  </body>
+</html>
